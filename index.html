@@ -1078,7 +1078,7 @@
         <div class="row contact-primary">
             <!-- Contact Details -->
             <div class="contact-details">
-                <h3 class="subhead subhead--light">Where To Find Us</h3>
+                <h3 class="subhead subhead--light">Let's Connect</h3>
                 <p>
                     <a href="mailto:info@kinwits.com" class="contact-email">info@kinwits.com</a>
                 </p>
@@ -1143,6 +1143,7 @@
             const closeIcon = document.querySelector(".close-icon");
             const menuIcon = document.querySelector(".menu-icon");
 
+            // Function to toggle the menu
             function toggleMenu() {
                 navMenu.classList.toggle("active");
 
@@ -1156,17 +1157,31 @@
                 }
             }
 
-            function closeMenu(event) {
+            // Function to close the menu
+            function closeMenu() {
+                navMenu.classList.remove("active");
+                closeIcon.style.display = "none";
+                menuIcon.style.display = "block";
+            }
+
+            // Close the menu when clicking outside of it
+            function closeMenuOnClickOutside(event) {
                 if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-                    navMenu.classList.remove("active");
-                    closeIcon.style.display = "none";
-                    menuIcon.style.display = "block";
+                    closeMenu();
                 }
             }
 
+            // Add event listeners
             menuToggle.addEventListener("click", toggleMenu);
-            document.addEventListener("click", closeMenu);
+            document.addEventListener("click", closeMenuOnClickOutside);
 
+            // Close the menu when an <li> is clicked
+            const navLinks = document.querySelectorAll(".navbar ul li");
+            navLinks.forEach(link => {
+                link.addEventListener("click", closeMenu);
+            });
+
+            // Intersection Observer for animations
             const options = {
                 root: null,  // Viewport
                 rootMargin: "0px",  // No margin
