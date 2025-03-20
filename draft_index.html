@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinwits</title>
-    <link rel="icon" type="image/png" href="favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Nohemi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Satoshi:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
@@ -36,7 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 6rem;
+            padding: 4rem 6rem;
             color: #ffffff;
             position: absolute; /* Make the navbar fixed to the top */
             top: 0; /* Position it at the very top */
@@ -45,25 +44,6 @@
             display: flex;
             background-color: transparent; /* Make the navbar background transparent */
             z-index: 1000; /* Ensures the navbar is above other elements */
-        }
-
-        .navbar .logo-section {
-            margin-left: -3.6rem;
-        }
-
-        .navbar .site-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-        }
-
-        .navbar .site-logo img {
-            height: 120px;
-        }
-
-        .navbar .site-logo h3 {
-            margin-left: -1.8rem;
         }
 
         .navbar .logo {
@@ -210,8 +190,8 @@
 
         /* Section styling */
         section {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+            padding-top: 18rem;
+            padding-bottom: 18rem;
             background-color: #ffffff;
             position: relative;
         }
@@ -322,18 +302,6 @@
             transition: opacity 1s ease, transform 1s ease;  /* Smooth and slower transition */
         }
 
-        .service-item {
-            background: #fff; /* Ensure it has a background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        .service-item:hover {
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger on hover */
-        }
-
         /* Animation when the element comes into view for About, Services, and Contact sections */
         #about .row.visible, #about .step.visible, #services .row.visible, #services .service-item.visible, 
         #contact .col-full.visible, #contact .contact-primary.visible  {
@@ -408,8 +376,8 @@
 
 
         .s-contact {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+            padding-top: 21rem;
+            padding-bottom: 10rem;
             background-color: #111111;
             color: rgba(255, 255, 255, 0.3);
             position: relative;
@@ -442,7 +410,7 @@
         }
 
         .contact-email:hover {
-            color: #26bfb5; /* Darker shade on hover */
+            color: #0056b3; /* Darker shade on hover */
         }
 
         @keyframes pulse {
@@ -473,7 +441,7 @@
         }
 
         .contact-social a:hover {
-            color: #26bfb5; /* Change to your brand color */
+            color: #007BFF; /* Change to your brand color */
             transform: translateY(-5px);
         }
 
@@ -493,10 +461,6 @@
             padding-top: 2rem;
             display: flex;
             justify-content: space-between;
-        }
-
-        .cl-copyright span a {
-            color: #26bfb5;
         }
 
         .scroll-to-top {
@@ -564,26 +528,6 @@
         @media (max-width: 540px) and (min-width: 344px) {
             .navbar {
                 padding: 3rem 2rem 3rem 1.5rem;
-            }
-
-            .navbar .logo-section {
-                margin-left: -2.4rem;
-                margin-top: -0.5rem;
-            }
-
-            .navbar .site-logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-            .navbar .site-logo img {
-                height: 100px;
-            }
-
-            .navbar .site-logo h3 {
-                margin-left: -1.8rem;
             }
 
             .navbar .logo {
@@ -831,26 +775,6 @@
         }
 
         @media (max-width: 912px) and (min-width: 541px) {
-            .navbar .logo-section {
-                margin-left: -2.4rem;
-                margin-top: 0rem;
-            }
-
-            .navbar .site-logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-            .navbar .site-logo img {
-                height: 100px;
-            }
-
-            .navbar .site-logo h3 {
-                margin-left: -1.8rem;
-            }
-
             header .home-content p {
                 padding-top: 2rem;
             }
@@ -898,26 +822,6 @@
         }
 
         @media (max-width: 1024px) and (min-width: 913px) {
-            .navbar .logo-section {
-                margin-left: -2.4rem;
-                margin-top: 0rem;
-            }
-
-            .navbar .site-logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-            .navbar .site-logo img {
-                height: 100px;
-            }
-
-            .navbar .site-logo h3 {
-                margin-left: -1.8rem;
-            }
-
             header .home-content {
                 max-width: 800px !important;
             }
@@ -972,7 +876,7 @@
 
         @media (max-width: 1024px) and (min-width: 541px) {
             .navbar {
-                padding: 2rem 2rem 3rem 2rem;
+                padding: 3rem 2rem 3rem 2rem;
             }
 
             .menu-icon {
@@ -1008,11 +912,8 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo-section">
-            <a href="index.html" class="site-logo">
-                <img src="kinwits-logo.png" alt="Kinwits Studio Logo">
-                <h3 class="logo">KiNWiTS</h3>
-            </a>
+        <div>
+            <h3 class="logo">KINWITS</h3>
             <a class="menu-toggle" href="#0">
                 <span class="menu-icon"></span>
                 <span class="close-icon">&#10005;</span>
@@ -1177,13 +1078,13 @@
         <div class="row contact-primary">
             <!-- Contact Details -->
             <div class="contact-details">
-                <h3 class="subhead subhead--light">Let's Connect</h3>
+                <h3 class="subhead subhead--light">Where To Find Us</h3>
                 <p>
                     <a href="mailto:info@kinwits.com" class="contact-email">info@kinwits.com</a>
                 </p>
                 <p class="contact-address">
                     Shivam Tower, 1st floor,<br>
-                    Kota, Udupi District, KA<br>
+                    KOTA, Udupi District, KA<br>
                     INDIA - 576221
                 </p>
             </div> <!-- end contact-details -->
@@ -1242,7 +1143,6 @@
             const closeIcon = document.querySelector(".close-icon");
             const menuIcon = document.querySelector(".menu-icon");
 
-            // Function to toggle the menu
             function toggleMenu() {
                 navMenu.classList.toggle("active");
 
@@ -1256,31 +1156,17 @@
                 }
             }
 
-            // Function to close the menu
-            function closeMenu() {
-                navMenu.classList.remove("active");
-                closeIcon.style.display = "none";
-                menuIcon.style.display = "block";
-            }
-
-            // Close the menu when clicking outside of it
-            function closeMenuOnClickOutside(event) {
+            function closeMenu(event) {
                 if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-                    closeMenu();
+                    navMenu.classList.remove("active");
+                    closeIcon.style.display = "none";
+                    menuIcon.style.display = "block";
                 }
             }
 
-            // Add event listeners
             menuToggle.addEventListener("click", toggleMenu);
-            document.addEventListener("click", closeMenuOnClickOutside);
+            document.addEventListener("click", closeMenu);
 
-            // Close the menu when an <li> is clicked
-            const navLinks = document.querySelectorAll(".navbar ul li");
-            navLinks.forEach(link => {
-                link.addEventListener("click", closeMenu);
-            });
-
-            // Intersection Observer for animations
             const options = {
                 root: null,  // Viewport
                 rootMargin: "0px",  // No margin
