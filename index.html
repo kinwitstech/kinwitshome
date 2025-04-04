@@ -1,1314 +1,1421 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kinwits</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Nohemi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Satoshi:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Nohemi:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Satoshi:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
     <style>
-        /* Global box-sizing fix */
-        * {
-            box-sizing: border-box;
-        }
+      /* Global box-sizing fix */
+      * {
+        box-sizing: border-box;
+      }
 
-        h1 {
-            font-family: 'Nohemi', sans-serif;
-        }
+      h1,
+      h3 {
+        font-family: "Nohemi", sans-serif;
+      }
 
-        h3 {
-            font-family: 'Space Grotesk', sans-serif;;
-        }
+      p,
+      body {
+        font-family: "Satoshi", sans-serif;
+      }
 
-        p, body {
-            font-family: 'Satoshi', sans-serif;
-        }
+      body {
+        margin: 0;
+        scroll-behavior: smooth;
+      }
 
-        body {
-            margin: 0;
-            scroll-behavior: smooth;
-        }
+      /* Navbar styling */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 6rem;
+        color: #ffffff;
+        position: absolute; /* Make the navbar fixed to the top */
+        top: 0; /* Position it at the very top */
+        left: 0; /* Ensure it's aligned to the left */
+        width: 100%; /* Make the navbar span the full width of the page */
+        display: flex;
+        background-color: transparent; /* Make the navbar background transparent */
+        z-index: 1000; /* Ensures the navbar is above other elements */
+      }
 
-        /* Navbar styling */
+      .navbar .logo-section {
+        margin-left: -3.6rem;
+      }
+
+      .navbar .site-logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+      }
+
+      .navbar .site-logo img {
+        height: 60px;
+      }
+
+      .navbar .site-logo h3 {
+        padding-left: 5px;
+      }
+
+      .navbar .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        letter-spacing: 0.1rem;
+      }
+
+      .navbar ul {
+        font-size: 1.3rem;
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar ul li {
+        margin: 0 1rem;
+      }
+
+      .navbar ul li i {
+        display: none;
+      }
+
+      .navbar ul li:hover {
+        animation: softbounce 0.3s ease-in-out;
+      }
+
+      @keyframes softbounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .navbar ul li a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .navbar ul li a:hover {
+        color: #cc147f;
+      }
+
+      .close-icon {
+        display: none;
+      }
+
+      .social-small {
+        display: none;
+      }
+
+      #home {
+        background-image: url("./xu-haiwei-_3KdlCgHAn0-unsplash.jpg"); /* Path to your image */
+        background-size: cover; /* Ensures the image covers the full background */
+        background-position: top center; /* Positions the image at the top center */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        height: 100vh; /* Makes the section take the full viewport height */
+        margin: 0; /* Removes any default margin around the header */
+        padding: 0; /* Removes any default padding */
+        display: flex; /* Enables flexbox for centering content */
+        align-items: center; /* Vertically centers content */
+        justify-content: center; /* Horizontally centers content */
+        color: white; /* Sets text color to white for contrast, adjust as needed */
+      }
+
+      /* Header styling */
+      .header {
+        padding: 13rem 0;
+        color: #ffffff;
+        text-align: center;
+        min-height: 970px;
+        background-color: #111111;
+        position: relative;
+      }
+
+      header .home-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header .home-content p {
+        text-align: left;
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(50px);
+        animation: slideUp 1.5s ease-out forwards;
+      }
+
+      .fade-up:nth-child(1) {
+        animation-delay: 0s; /* No delay for the heading */
+      }
+
+      .fade-up:nth-child(2) {
+        animation-delay: 0.3s; /* Add a slight delay for the paragraph */
+      }
+
+      @keyframes slideUp {
+        0% {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .row {
+        width: 89%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header h1 {
+        font-size: 6rem;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      .header p {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-left: 6rem;
+        color: #ffffff;
+      }
+
+      .header p::before {
+        content: "";
+        display: block;
+        width: 4rem;
+        background-color: #cc147f;
+        position: absolute;
+        height: 2px;
+        top: 2rem;
+        left: 3px;
+      }
+
+      /* Section styling */
+      section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        background-color: #ffffff;
+        position: relative;
+      }
+
+      .subhead::before {
+        content: "/ ";
+      }
+
+      .subhead {
+        font-size: 1.2rem;
+        line-height: 1.3125;
+        text-transform: uppercase;
+        letter-spacing: 0.25rem;
+        color: #cc147f;
+        margin-top: 0;
+        margin-bottom: 2.1rem;
+      }
+
+      .display-1 {
+        font-size: 3.8rem;
+        line-height: 1.3;
+        letter-spacing: 0;
+        color: #000000;
+        letter-spacing: -0.03rem;
+        margin-top: 0;
+        margin-bottom: 4.8rem;
+      }
+
+      p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        unicode-bidi: isolate;
+      }
+
+      p.lead {
+        font-size: 1.5rem;
+        line-height: 1.75;
+        margin-bottom: 3.6rem;
+        color: rgba(85, 85, 85, 0.95);
+      }
+
+      .steps-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+        gap: 4rem;
+      }
+
+      .steps-container {
+        width: 89%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .process {
+        margin-top: 4.2rem;
+        position: relative;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        position: relative;
+      }
+
+      .circle {
+        width: 3rem;
+        height: 3rem;
+        background-color: #00bfa5;
+        color: white;
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        z-index: 1;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .step .circle:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+      }
+
+      .vertical-line {
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background-color: #e0e0e0;
+        left: 1.5rem;
+        top: 3.8rem;
+        z-index: 0;
+        transition: height 0.3s ease;
+      }
+
+      .step:hover .vertical-line {
+        height: 120px; /* Extend the line on hover */
+        background-color: #00bfa5;
+      }
+
+      /* Initial hidden state for elements within the About section */
+      #about .row,
+      #about .step,
+      #services .row,
+      #services .service-item,
+      #contact .col-full,
+      #contact .contact-primary {
+        opacity: 0; /* Start hidden */
+        transform: translateY(50px); /* Start below the section */
+        transition: opacity 1s ease, transform 1s ease; /* Smooth and slower transition */
+      }
+
+      .service-item {
+        background: #fff; /* Ensure it has a background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        transition: box-shadow 0.3s ease-in-out;
+      }
+
+      .service-item:hover {
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger on hover */
+      }
+
+      /* Animation when the element comes into view for About, Services, and Contact sections */
+      #about .row.visible,
+      #about .step.visible,
+      #services .row.visible,
+      #services .service-item.visible,
+      #contact .col-full.visible,
+      #contact .contact-primary.visible {
+        opacity: 1;
+        transform: translateY(0); /* Reset to original position */
+      }
+
+      .services {
+        text-align: center;
+      }
+
+      .services h2 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .services .service-item {
+        margin: 2rem 0;
+      }
+
+      .services .service-item h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .light-gray {
+        background-color: #f1f1f1;
+      }
+
+      .services-list {
+        margin-top: 5rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Two columns */
+        gap: 4rem;
+      }
+
+      .service-icon {
+        padding-bottom: 2rem;
+      }
+
+      .service-icon i {
+        font-size: 2.5rem;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+
+      .service-icon:hover i {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+      }
+
+      .service-icon i::before {
+        font-size: 3rem;
+        color: #26bfb5;
+      }
+
+      .step-service-content h3 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #333333;
+      }
+
+      .step-service-content p {
+        margin: 0.5rem 0 0;
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      .steps-container .step-service-content p {
+        max-width: 450px;
+      }
+
+      .s-contact {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        background-color: #111111;
+        color: rgba(255, 255, 255, 0.3);
+        position: relative;
+      }
+
+      .display-1--light {
+        color: #ffffff;
+      }
+
+      .contact-main {
+        margin-top: 14.4rem;
+        margin-bottom: 4.8rem;
+      }
+
+      .contact-address {
+        font-size: 1.5rem;
+        line-height: 1.5;
+        margin-top: 2rem;
+      }
+
+      .contact-email {
+        display: inline-block;
+        font-size: 2.4rem;
+        line-height: 1.222;
+        color: #ffffff;
+        position: relative;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        animation: pulse 2s infinite;
+      }
+
+      .contact-email:hover {
+        color: #26bfb5; /* Darker shade on hover */
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .contact-social {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding-left: 0;
+        gap: 1rem;
+        font-size: 3rem;
+      }
+
+      .contact-social a {
+        color: #fff;
+        margin: 0 10px;
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      .contact-social a:hover {
+        color: #26bfb5; /* Change to your brand color */
+        transform: translateY(-5px);
+      }
+
+      .contact-primary {
+        display: flex;
+      }
+
+      .contact-details {
+        width: 50%;
+      }
+
+      .follow-section {
+        width: 50%;
+      }
+
+      .cl-copyright {
+        padding-top: 2rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .cl-copyright span a {
+        color: #26bfb5;
+      }
+
+      .scroll-to-top {
+        position: fixed;
+        bottom: 25px; /* Position it above the footer */
+        right: 30px; /* Align to the right */
+        display: none; /* Hidden by default */
+        background-color: #333;
+        color: #cc147f;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .scroll-to-top:hover {
+        background-color: white;
+      }
+
+      .scroll-to-top:before {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 65px;
+        background-color: #cc147f;
+        position: absolute;
+        top: -80px;
+        left: 50%;
+      }
+
+      .scroll-to-top:after {
+        content: "back to top";
+        display: inline-block;
+        width: 155px;
+        font-size: 12px;
+        line-height: 38px;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        color: #cc147f;
+        transform: rotate(-90deg);
+        transform-origin: left bottom;
+        position: absolute;
+        left: calc(30px + 15px);
+        top: -110px;
+      }
+
+      @media (max-width: 540px) and (min-width: 344px) {
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 6rem;
-            color: #ffffff;
-            position: absolute; /* Make the navbar fixed to the top */
-            top: 0; /* Position it at the very top */
-            left: 0; /* Ensure it's aligned to the left */
-            width: 100%; /* Make the navbar span the full width of the page */
-            display: flex;
-            background-color: transparent; /* Make the navbar background transparent */
-            z-index: 1000; /* Ensures the navbar is above other elements */
+          padding: 3rem 2rem 3rem 1.5rem;
         }
 
         .navbar .logo-section {
-            margin-left: -3.6rem;
+          margin-left: -2.4rem;
+          margin-top: -0.5rem;
         }
 
         .navbar .site-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: white;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: white;
+          margin-left: 2rem;
         }
 
         .navbar .site-logo img {
-            height: 120px;
-        }
-
-        .navbar .site-logo h3 {
-            margin-left: -1.8rem;
+          height: 50px;
         }
 
         .navbar .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 0.1rem;
-            text-transform: uppercase;
+          font-size: 1.5rem;
         }
 
         .navbar ul {
-            font-size: 1.3rem;
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
+          display: flex; /* Ensure it's visible when toggled */
+          flex-direction: column;
+          font-size: 1.2rem;
+          background-color: rgba(0, 0, 0, 0.9);
+          position: fixed;
+          top: 0;
+          right: -100%; /* Start off-screen */
+          width: 60%;
+          height: 100%;
+          line-height: 4rem;
+          padding: 8rem 2rem 2rem 2rem;
+          transition: right 0.4s ease-in-out; /* Smooth slide-in effect */
+          opacity: 1; /* Keep ul visible */
+          transform: none;
+        }
+
+        .navbar ul.active {
+          right: 0; /* Move into view when active */
         }
 
         .navbar ul li {
-            margin: 0 1rem;
-        }
-
-        .navbar ul li i {
-            display: none;
-        }
-
-        .navbar ul li:hover {
-            animation: softbounce 0.3s ease-in-out;
-        }
-
-        @keyframes softbounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .navbar ul li a:hover {
-            color: #cc147f;
-        }
-
-        .close-icon {
-            display: none;
+          opacity: 0;
+          transform: translateX(30px); /* Start slightly to the right */
+          transition: opacity 0.6s ease, transform 0.6s ease;
+          display: flex !important;
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
         }
 
         .social-small {
-            display: none;
+          padding-top: 3rem;
         }
 
-        #home {
-            background-image: url('./home.jpg'); /* Path to your image */
-            background-size: cover; /* Ensures the image covers the full background */
-            background-position: top center; /* Positions the image at the top center */
-            background-repeat: no-repeat; /* Prevents the image from repeating */
-            height: 100vh; /* Makes the section take the full viewport height */
-            margin: 0; /* Removes any default margin around the header */
-            padding: 0; /* Removes any default padding */
-            display: flex; /* Enables flexbox for centering content */
-            align-items: center; /* Vertically centers content */
-            justify-content: center; /* Horizontally centers content */
-            color: white; /* Sets text color to white for contrast, adjust as needed */
+        .social-small a {
+          font-size: 2rem;
         }
 
-        /* Header styling */
+        .navbar ul li i {
+          display: block;
+          color: #cc147f;
+        }
+
+        /* Animate each li when the menu is active */
+        .navbar ul.active li {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        /* Add delay for a staggered effect */
+        .navbar ul.active li:nth-child(1) {
+          transition-delay: 0.2s;
+        }
+        .navbar ul.active li:nth-child(2) {
+          transition-delay: 0.3s;
+        }
+        .navbar ul.active li:nth-child(3) {
+          transition-delay: 0.4s;
+        }
+        .navbar ul.active li:nth-child(4) {
+          transition-delay: 0.5s;
+        }
+        .navbar ul.active li:nth-child(5) {
+          transition-delay: 0.6s;
+        }
+
+        .menu-toggle {
+          width: 48px;
+          height: 48px;
+          cursor: pointer;
+          position: fixed;
+          top: 3.2rem;
+          right: -1rem;
+          z-index: 1100;
+        }
+
+        .menu-icon {
+          display: block;
+          width: 30px;
+          height: 2px;
+          right: 1.5rem;
+          bottom: auto;
+          background-color: #cc147f;
+          position: relative;
+          top: 48%;
+        }
+
+        .menu-icon::before {
+          top: -9px;
+          content: "";
+          width: 100%;
+          height: 100%;
+          background-color: inherit;
+          position: absolute;
+          left: 0;
+        }
+
+        .menu-icon::after {
+          bottom: -9px;
+          content: "";
+          width: 100%;
+          height: 100%;
+          background-color: inherit;
+          position: absolute;
+          left: 0;
+        }
+
+        .close-icon {
+          display: none;
+          font-size: 1.5rem;
+          color: #cc147f;
+          position: fixed;
+          right: 2rem;
+          cursor: pointer;
+          z-index: 1200;
+        }
+
         .header {
-            padding: 13rem 0;
-            color: #ffffff;
-            text-align: center;
-            min-height: 970px;
-            background-color: #111111;
-            position: relative;
-        }
-
-        header .home-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        header .home-content p {
-            text-align: left;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(50px);
-            animation: slideUp 1.5s ease-out forwards;
-        }
-
-        .fade-up:nth-child(1) {
-            animation-delay: 0s;  /* No delay for the heading */
-        }
-
-        .fade-up:nth-child(2) {
-            animation-delay: 0.3s;  /* Add a slight delay for the paragraph */
-        }
-
-        @keyframes slideUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .row {
-            width: 89%;
-            max-width: 1200px;
-            margin: 0 auto;
+          min-height: 630px;
         }
 
         .header h1 {
-            font-size: 6rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            text-align: left;
+          font-size: 2.5rem;
+          padding-bottom: 0.5rem;
         }
 
         .header p {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            padding-left: 6rem;
-            color: #ffffff;
+          font-size: 1.2rem;
+          text-align: left;
+          padding: 0;
+          padding-top: 1rem;
         }
 
-        .header p::before {
-            content: "";
-            display: block;
-            width: 4rem;
-            background-color: #cc147f;
-            position: absolute;
-            height: 2px;
-            top: 2rem;
-            left: 3px;
+        header h1 br {
+          display: none;
         }
 
-        /* Section styling */
-        section {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-            background-color: #ffffff;
-            position: relative;
-        }
-
-        .subhead::before {
-            content: "/ ";
-        }
-
-        .subhead {
-            font-size: 1.2rem;
-            line-height: 1.3125;
-            text-transform: uppercase;
-            letter-spacing: 0.25rem;
-            color: #cc147f;
-            margin-top: 0;
-            margin-bottom: 2.1rem;
+        header p br {
+          display: none;
         }
 
         .display-1 {
-            font-size: 3.8rem;
-            line-height: 1.3;
-            letter-spacing: 0;
-            color: #000000;
-            letter-spacing: -0.03rem;
-            margin-top: 0;
-            margin-bottom: 4.8rem;
+          font-size: 1.8rem;
+          margin-bottom: 2.8rem;
         }
 
-        p {
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            unicode-bidi: isolate;
+        .header p::before {
+          top: -1rem;
+        }
+
+        section {
+          padding-top: 6rem;
+          padding-bottom: 7rem;
+        }
+
+        .subhead {
+          font-size: 1rem;
+          margin-bottom: 0.9rem;
         }
 
         p.lead {
-            font-size: 1.5rem;
-            line-height: 1.75;
-            margin-bottom: 3.6rem;
-            color: rgba(85, 85, 85, 0.95);
-        }
-        
-        .steps-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two columns */
-            gap: 5rem;         
-        }
-
-        .steps-container {
-            width: 89%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .process {
-            margin-top: 4.2rem;
-            position: relative;
-        }
-
-        .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            position: relative;
+          font-size: 1.2rem;
         }
 
         .circle {
-            width: 3rem;
-            height: 3rem;
-            background-color: #00bfa5;
-            color: white;
-            font-size: 1.25rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            z-index: 1;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .step .circle:hover {
-            transform: scale(1.1); /* Slightly enlarge on hover */
-        }
-
-        .vertical-line {
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background-color: #e0e0e0;
-            left: 1.5rem;
-            top: 3.8rem;
-            z-index: 0;
-            transition: height 0.3s ease;
-        }
-
-        .step:hover .vertical-line {
-            height: 120px; /* Extend the line on hover */
-            background-color: #00bfa5;
-        }
-
-        /* Initial hidden state for elements within the About section */
-        #about .row, #about .step, #services .row, #services .service-item, 
-        #contact .col-full, #contact .contact-primary {
-            opacity: 0;  /* Start hidden */
-            transform: translateY(50px);  /* Start below the section */
-            transition: opacity 1s ease, transform 1s ease;  /* Smooth and slower transition */
-        }
-
-        .service-item {
-            background: #fff; /* Ensure it has a background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        .service-item:hover {
-            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Slightly stronger on hover */
-        }
-
-        /* Animation when the element comes into view for About, Services, and Contact sections */
-        #about .row.visible, #about .step.visible, #services .row.visible, #services .service-item.visible, 
-        #contact .col-full.visible, #contact .contact-primary.visible  {
-            opacity: 1;
-            transform: translateY(0);  /* Reset to original position */
-        }
-
-        .services {
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .services .service-item {
-            margin: 2rem 0;
-        }
-
-        .services .service-item h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .light-gray {
-            background-color: #f1f1f1;
-        }
-
-        .services-list {
-            margin-top: 5rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Two columns */
-            gap: 5rem;
-        }
-
-        .service-icon {
-            padding-bottom: 2rem;
-        }
-
-        .service-icon i {
-            font-size: 2.5rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        .service-icon:hover i {
-            transform: scale(1.1); /* Slightly enlarge on hover */
-        }
-
-        .service-icon i::before {
-            font-size: 3rem;
-            color: #26bfb5;
+          width: 2rem;
+          height: 2rem;
+          font-size: 1rem;
         }
 
         .step-service-content h3 {
-            margin: 0;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333333;
+          font-size: 1.5rem;
         }
 
         .step-service-content p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.5;
+          font-size: 1.2rem;
+          height: auto;
         }
 
         .steps-container .step-service-content p {
-            max-width: 450px;
+          max-width: 285px;
         }
 
+        .services-list {
+          grid-template-columns: 1fr;
+        }
+
+        .steps-container {
+          grid-template-columns: 1fr;
+        }
+
+        .row {
+          width: 90%;
+        }
 
         .s-contact {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
-            background-color: #111111;
-            color: rgba(255, 255, 255, 0.3);
-            position: relative;
-        }
-
-        .display-1--light {
-            color: #ffffff;
-        }
-
-        .contact-main {
-            margin-top: 14.4rem;
-            margin-bottom: 4.8rem;
-        }
-
-        .contact-address {
-            font-size: 1.5rem;
-            line-height: 1.5;
-            margin-top: 2rem;
-        }
-
-        .contact-email {
-            display: inline-block;
-            font-size: 2.4rem;
-            line-height: 1.222;
-            color: #ffffff;
-            position: relative;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-
-        .contact-email:hover {
-            color: #26bfb5; /* Darker shade on hover */
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .contact-social {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding-left: 0;
-            gap: 1rem;
-            font-size: 3rem;
-        }
-
-        .contact-social a {
-            color: #fff;
-            margin: 0 10px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .contact-social a:hover {
-            color: #26bfb5; /* Change to your brand color */
-            transform: translateY(-5px);
+          padding-top: 6rem;
+          padding-bottom: 5rem;
         }
 
         .contact-primary {
-            display: flex;
+          flex-direction: column;
         }
 
         .contact-details {
-            width: 50%;
+          width: 100%;
+        }
+
+        .contact-address {
+          font-size: 1.2rem;
+          margin-top: 1rem;
         }
 
         .follow-section {
-            width: 50%;
+          width: 100%;
+          padding-top: 1rem;
+        }
+
+        .contact-email {
+          font-size: 2rem;
         }
 
         .cl-copyright {
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .cl-copyright span a {
-            color: #26bfb5;
+          text-align: center;
+          padding-top: 4rem;
         }
 
         .scroll-to-top {
-            position: fixed;
-            bottom: 25px; /* Position it above the footer */
-            right: 30px; /* Align to the right */
-            display: none; /* Hidden by default */
-            background-color: #333;
-            color: #cc147f;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            font-size: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-            animation: bounce 2s infinite;
+          width: 36px;
+          height: 36px;
+          font-size: 16px;
+          line-height: 38px;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+        .scroll-to-top::before {
+          display: none;
         }
 
-        .scroll-to-top:hover {
-            background-color: white;
+        .scroll-to-top::after {
+          display: none;
+        }
+      }
+
+      @media (max-width: 540px) and (min-width: 431px) {
+        .steps-container .step-service-content p {
+          max-width: 400px;
+        }
+      }
+
+      @media (max-width: 912px) and (min-width: 541px) {
+        .navbar .logo-section {
+          margin-left: -2.4rem;
+          margin-top: 0rem;
         }
 
-        .scroll-to-top:before {
-            content: "";
-            display: block;
-            width: 1px;
-            height: 65px;
-            background-color: #cc147f;
-            position: absolute;
-            top: -80px;
-            left: 50%;
+        .navbar .site-logo {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: white;
+          margin-left: 2rem;
         }
 
-        .scroll-to-top:after {
-            content: "back to top";
-            display: inline-block;
-            width: 155px;
-            font-size: 12px;
-            line-height: 38px;
-            text-transform: uppercase;
-            letter-spacing: 0.2rem;
-            color: #cc147f;
-            transform: rotate(-90deg);
-            transform-origin: left bottom;
-            position: absolute;
-            left: calc(30px + 15px);
-            top: -110px;
+        .navbar .site-logo img {
+          height: 60px;
         }
 
-        @media (max-width: 540px) and (min-width: 344px) {
-            .navbar {
-                padding: 3rem 2rem 3rem 1.5rem;
-            }
-
-            .navbar .logo-section {
-                margin-left: -2.4rem;
-                margin-top: -0.5rem;
-            }
-
-            .navbar .site-logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-            .navbar .site-logo img {
-                height: 100px;
-            }
-
-            .navbar .site-logo h3 {
-                margin-left: -1.8rem;
-            }
-
-            .navbar .logo {
-                font-size: 1.5rem;
-            }
-
-            .navbar ul {
-                display: flex; /* Ensure it's visible when toggled */
-                flex-direction: column;
-                font-size: 1.2rem;
-                background-color: rgba(0, 0, 0, 0.9);
-                position: fixed;
-                top: 0;
-                right: -100%; /* Start off-screen */
-                width: 60%;
-                height: 100%;
-                line-height: 4rem;
-                padding: 8rem 2rem 2rem 2rem;
-                transition: right 0.4s ease-in-out; /* Smooth slide-in effect */
-                opacity: 1; /* Keep ul visible */
-                transform: none;
-            }
-
-            .navbar ul.active {
-                right: 0; /* Move into view when active */
-            }
-
-            .navbar ul li {
-                opacity: 0;
-                transform: translateX(30px); /* Start slightly to the right */
-                transition: opacity 0.6s ease, transform 0.6s ease;
-                display: flex !important;
-                flex-direction: row;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .social-small {
-                padding-top: 3rem;
-            }
-
-            .social-small a {
-                font-size: 2rem;
-            }
-
-            .navbar ul li i {
-                display: block;
-                color: #cc147f;
-            }
-
-            /* Animate each li when the menu is active */
-            .navbar ul.active li {
-                opacity: 1;
-                transform: translateX(0);
-            }
-
-            /* Add delay for a staggered effect */
-            .navbar ul.active li:nth-child(1) { transition-delay: 0.2s; }
-            .navbar ul.active li:nth-child(2) { transition-delay: 0.3s; }
-            .navbar ul.active li:nth-child(3) { transition-delay: 0.4s; }
-            .navbar ul.active li:nth-child(4) { transition-delay: 0.5s; }
-            .navbar ul.active li:nth-child(5) { transition-delay: 0.6s; }
-
-            .menu-toggle {
-                width: 48px;
-                height: 48px;
-                cursor: pointer;
-                position: fixed;
-                top: 4rem;
-                right: -1rem;
-                z-index: 1100;
-            }
-
-            .menu-icon {
-                display: block;
-                width: 30px;
-                height: 2px;
-                right: 1.5rem;
-                bottom: auto;
-                background-color: #cc147f;
-                position: relative;
-                top: 48%;
-            }
-
-            .menu-icon::before{
-                top: -9px;
-                content: "";
-                width: 100%;
-                height: 100%;
-                background-color: inherit;
-                position: absolute;
-                left: 0;
-            }
-
-            .menu-icon::after{
-                bottom: -9px;
-                content: "";
-                width: 100%;
-                height: 100%;
-                background-color: inherit;
-                position: absolute;
-                left: 0;
-            }
-
-            .close-icon {
-                display: none;
-                font-size: 1.5rem;
-                color: #cc147f;
-                position: fixed;
-                right: 2rem;
-                cursor: pointer;
-                z-index: 1200;
-            }
-
-            .header {
-                min-height: 630px;
-            }
-
-            .header h1 {
-                font-size: 2.5rem;
-                padding-bottom: 0.5rem;
-            }
-
-            .header p {
-                font-size: 1.2rem;
-                text-align: left;
-                padding: 0;
-                padding-top: 1rem;
-            }
-
-            header h1 br {
-                display: none;
-            }
-
-            header p br {
-                display: none;
-            }
-
-            .display-1 {
-                font-size: 1.8rem;
-                margin-bottom: 2.8rem;
-            }
-
-            .header p::before {
-                top: -1rem;
-            }
-
-            section {
-                padding-top: 6rem;
-                padding-bottom: 7rem;
-            }
-
-            .subhead {
-                font-size: 1.0rem;
-                margin-bottom: 0.9rem;
-            }
-
-            p.lead {
-                font-size: 1.2rem;
-            }
-
-            .circle {
-                width: 2rem;
-                height: 2rem;
-                font-size: 1rem;
-            }
-
-            .step-service-content h3 {
-                font-size: 1.5rem;
-            }
-
-            .step-service-content p {
-                font-size: 1.2rem;
-                height: auto;
-            }
-
-            .steps-container .step-service-content p {
-                max-width: 285px;
-            }
-
-            .services-list {
-                grid-template-columns: 1fr;
-            }
-
-            .steps-container {
-                grid-template-columns: 1fr;
-            }
-
-            .row {
-                width: 90%;
-            }
-
-            .s-contact {
-                padding-top: 6rem;
-                padding-bottom: 5rem;
-            }
-
-            .contact-primary {
-                flex-direction: column;
-            }
-
-            .contact-details {
-                width: 100%;
-            }
-
-            .contact-address {
-                font-size: 1.2rem;
-                margin-top: 1rem;
-            }
-
-            .follow-section {
-                width: 100%;
-                padding-top: 1rem;
-            }
-
-            .contact-email {
-                font-size: 2rem;
-            }
-
-            .cl-copyright {
-                text-align: center;
-                padding-top: 4rem;
-            }
-
-            .scroll-to-top {
-                width: 36px;
-                height: 36px;
-                font-size: 16px;
-                line-height: 38px;
-            }
-
-            .scroll-to-top::before {
-                display: none;
-            }
-
-            .scroll-to-top::after {
-                display: none;
-            }
+        header .home-content p {
+          padding-top: 2rem;
         }
 
-        @media (max-width: 540px) and (min-width: 431px) {
-            .steps-container .step-service-content p {
-                max-width: 400px;
-            }
+        .steps-container {
+          display: flex;
+          flex-direction: column;
         }
 
-        @media (max-width: 912px) and (min-width: 541px) {
-            .navbar .logo-section {
-                margin-left: -2.4rem;
-                margin-top: 0rem;
-            }
-
-            .navbar .site-logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-            .navbar .site-logo img {
-                height: 100px;
-            }
-
-            .navbar .site-logo h3 {
-                margin-left: -1.8rem;
-            }
-
-            header .home-content p {
-                padding-top: 2rem;
-            }
-
-            .steps-container {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .steps-container .step-service-content p {
-                max-width: 610px;
-                font-size: 1.5rem;
-            }
-
-            .header p::before {
-                top: 3rem;
-            }
-
-            .display-1 {
-                font-size: 3rem;
-                line-height: 1.2;
-                margin-bottom: 3.5rem;
-            }
-
-            .services-list {
-                grid-template-columns: 1fr;
-            }
-
-            .services-list .step-service-content p {
-                font-size: 1.5rem;
-            }
-
-            p.lead {
-                line-height: 1.5;
-            }
-
-            .cl-copyright {
-                padding-top: 6rem;
-            }
-
-            .circle {
-                width: 3rem;
-                height: 3rem;
-            }
+        .steps-container .step-service-content p {
+          max-width: 610px;
+          font-size: 1.5rem;
         }
 
-        @media (max-width: 1024px) and (min-width: 913px) {
-            .navbar .logo-section {
-                margin-left: -2.4rem;
-                margin-top: 0rem;
-            }
-
-            .navbar .site-logo {
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: white;
-            }
-
-            .navbar .site-logo img {
-                height: 100px;
-            }
-
-            .navbar .site-logo h3 {
-                margin-left: -1.8rem;
-            }
-
-            header .home-content {
-                max-width: 800px !important;
-            }
-
-            /* fix this */
-            header h1 { 
-                font-size: 4rem;
-            }
-
-            /* fix this */
-            header p {
-                padding-left: 6rem;
-                padding-top: 1.5rem;
-                font-size: 1.8rem;
-                text-align: left;
-                line-height: 2.5rem;
-            }
-
-            .header p::before {
-                top: 3rem;
-            }
-
-            .circle {
-                width: 3rem;
-                height: 3rem;
-            }
-
-            .steps-container {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .steps-container .step-service-content p {
-                max-width: 820px;
-                font-size: 1.5rem;
-            }
-
-            .services-list .step-service-content p {
-                font-size: 1.5rem;
-            }
-
-            .services-list {
-                grid-template-columns: 1fr;
-            }
+        .header p::before {
+          top: 3rem;
         }
 
-        @media (max-width: 1024px) {
-            .vertical-line {
-                display: none;
-            }
+        .display-1 {
+          font-size: 3rem;
+          line-height: 1.2;
+          margin-bottom: 3.5rem;
         }
 
-        @media (max-width: 1024px) and (min-width: 541px) {
-            .navbar {
-                padding: 2rem 2rem 3rem 2rem;
-            }
-
-            .menu-icon {
-                right: 3rem;
-            }
-
-            header .home-content {
-                max-width: 580px;
-            }
-
-            header h1 {
-                font-size: 3rem !important;
-                margin-bottom: 0;
-            }
-
-            header h1 br {
-                display: none;
-            }
-
-            header p br {
-                display: none;
-            }
-
-            header p {
-                padding-left: 6rem !important;
-                line-height: 2rem !important;
-                margin-top: 0 !important;
-                font-size: 1.5rem !important;
-            }
+        .services-list {
+          grid-template-columns: 1fr;
         }
+
+        .services-list .step-service-content p {
+          font-size: 1.5rem;
+        }
+
+        p.lead {
+          line-height: 1.5;
+        }
+
+        .cl-copyright {
+          padding-top: 6rem;
+        }
+
+        .circle {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+
+      @media (max-width: 1024px) and (min-width: 913px) {
+        .navbar .logo-section {
+          margin-left: -2.4rem;
+          margin-top: 0rem;
+        }
+
+        .navbar .site-logo {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: white;
+          margin-left: 2rem;
+        }
+
+        .navbar .site-logo img {
+          height: 60px;
+        }
+
+        header .home-content {
+          max-width: 800px !important;
+        }
+
+        /* fix this */
+        header h1 {
+          font-size: 4rem;
+        }
+
+        /* fix this */
+        header p {
+          padding-left: 6rem;
+          padding-top: 1.5rem;
+          font-size: 1.8rem;
+          text-align: left;
+          line-height: 2.5rem;
+        }
+
+        .header p::before {
+          top: 3rem;
+        }
+
+        .circle {
+          width: 3rem;
+          height: 3rem;
+        }
+
+        .steps-container {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .steps-container .step-service-content p {
+          max-width: 820px;
+          font-size: 1.5rem;
+        }
+
+        .services-list .step-service-content p {
+          font-size: 1.5rem;
+        }
+
+        .services-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .vertical-line {
+          display: none;
+        }
+      }
+
+      @media (max-width: 1024px) and (min-width: 541px) {
+        .navbar {
+          padding: 2rem 2rem 3rem 2rem;
+        }
+
+        .menu-icon {
+          right: 3rem;
+        }
+
+        header .home-content {
+          max-width: 580px;
+        }
+
+        header h1 {
+          font-size: 3rem !important;
+          margin-bottom: 0;
+        }
+
+        header h1 br {
+          display: none;
+        }
+
+        header p br {
+          display: none;
+        }
+
+        header p {
+          padding-left: 6rem !important;
+          line-height: 2rem !important;
+          margin-top: 0 !important;
+          font-size: 1.5rem !important;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo-section">
-            <a href="index.html" class="site-logo">
-                <img src="kinwits-logo.png" alt="Kinwits Studio Logo">
-                <h3 class="logo">KiNWiTS</h3>
+      <div class="logo-section">
+        <a href="index.html" class="site-logo">
+          <img src="logo.png" alt="Kinwits Studio Logo" />
+          <h3 class="logo">Kinwits</h3>
+        </a>
+        <a class="menu-toggle" href="#0">
+          <span class="menu-icon"></span>
+          <span class="close-icon">&#10005;</span>
+        </a>
+      </div>
+      <div>
+        <ul>
+          <li><i class="fas fa-home"></i><a href="#home">Home</a></li>
+          <li><i class="fas fa-info-circle"></i><a href="#about">About</a></li>
+          <li><i class="fas fa-briefcase"></i><a href="#services">Work</a></li>
+          <li><i class="fas fa-envelope"></i><a href="#contact">Contact</a></li>
+          <li class="social-small">
+            <a
+              href="https://instagram.com/kinwitstechnologies"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <i class="fab fa-instagram"></i>
             </a>
-            <a class="menu-toggle" href="#0">
-                <span class="menu-icon"></span>
-                <span class="close-icon">&#10005;</span>
+            <a
+              href="https://linkedin.com/company/kinwits"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin"></i>
             </a>
-        </div>
-        <div>
-            <ul>
-                <li><i class="fas fa-home"></i><a href="#home">Home</a></li>
-                <li><i class="fas fa-info-circle"></i><a href="#about">About</a></li>
-                <li><i class="fas fa-briefcase"></i><a href="#services">Work</a></li>
-                <li><i class="fas fa-envelope"></i><a href="#contact">Contact</a></li>
-                <li class="social-small">
-                    <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://linkedin.com/company/kinwits" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Header Section -->
     <header id="home" class="header">
-        <div class="row home-content">
-            <h1 class="fade-up">Hello folks, we are
-                <br> 
-                Kinwits Tech.
-            </h1>
-            <p class="fade-up">We craft software, design unique digital experiences,
-                <br>
-                and empower AI to elevate your business.
-            </p>
-        </div>
+      <div class="row home-content">
+        <h1 class="fade-up">
+          Hello folks, we are
+          <br />
+          Kinwits Tech.
+        </h1>
+        <p class="fade-up">
+          We craft software, design unique digital experiences,
+          <br />
+          and empower AI to elevate your business.
+        </p>
+      </div>
     </header>
 
     <!-- About Section -->
     <!-- About Section -->
     <section id="about">
-        <div class="row">
-            <h3 class="subhead">Who We Are</h3>
-            <h1 class="display-1">We are a team of creative minds and tech enthusiasts dedicated to crafting exceptional digital experiences.</h1>
-        </div> <!-- end section-header -->
+      <div class="row">
+        <h3 class="subhead">Who We Are</h3>
+        <h1 class="display-1">
+          We are a team of creative minds and tech enthusiasts dedicated to
+          crafting exceptional digital experiences.
+        </h1>
+      </div>
+      <!-- end section-header -->
 
-        <div class="row">
-            <p class="lead">
-                At Kinwits Tech, we believe in the power of design and technology to transform businesses. With <strong>15+ years of experience</strong> in software development and a team of seasoned professionals, we bring a unique blend of expertise and innovation to every project. Our mission is to deliver solutions that not only meet but exceed our clients' expectations, helping them thrive in the digital world.
+      <div class="row">
+        <p class="lead">
+          At Kinwits Tech, we believe in the power of design and technology to
+          transform businesses. With <strong>15+ years of experience</strong> in
+          software development and a team of seasoned professionals, we bring a
+          unique blend of expertise and innovation to every project. Our mission
+          is to deliver solutions that not only meet but exceed our clients'
+          expectations, helping them thrive in the digital world.
+        </p>
+      </div>
+      <!-- end about-desc -->
+
+      <div class="steps-container process">
+        <div class="step">
+          <div class="circle">1</div>
+          <div class="vertical-line"></div>
+          <div class="step-service-content">
+            <h3>Define</h3>
+            <p>
+              We start by understanding your business goals, target audience,
+              and challenges. This helps us define a clear roadmap for your
+              project, ensuring that every step aligns with your vision.
             </p>
-        </div> <!-- end about-desc -->
-
-        <div class="steps-container process">
-            <div class="step">
-                <div class="circle">1</div>
-                <div class="vertical-line"></div>
-                <div class="step-service-content">
-                    <h3>Define</h3>
-                    <p>
-                        We start by understanding your business goals, target audience, and challenges. This helps us define a clear roadmap for your project, ensuring that every step aligns with your vision.
-                    </p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="circle">2</div>
-                <div class="vertical-line"></div>
-                <div class="step-service-content">
-                    <h3>Design</h3>
-                    <p>
-                        Our design process is collaborative and iterative. We create wireframes, prototypes, and high-fidelity designs that are not only visually stunning but also highly functional and user-friendly.
-                    </p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="circle">3</div>
-                <div class="vertical-line"></div>
-                <div class="step-service-content">
-                    <h3>Build</h3>
-                    <p>
-                        Using the latest technologies and best practices, we bring your designs to life. Our development team ensures that your product is scalable, secure, and performs flawlessly across all devices.
-                    </p>
-                </div>
-            </div>
-            <div class="step">
-                <div class="circle">4</div>
-                <div class="vertical-line"></div>
-                <div class="step-service-content">
-                    <h3>Launch</h3>
-                    <p>
-                        We don’t just launch your product; we ensure it’s a success. From rigorous testing to post-launch support, we’re with you every step of the way to ensure your product thrives in the market.
-                    </p>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="step">
+          <div class="circle">2</div>
+          <div class="vertical-line"></div>
+          <div class="step-service-content">
+            <h3>Design</h3>
+            <p>
+              Our design process is collaborative and iterative. We create
+              wireframes, prototypes, and high-fidelity designs that are not
+              only visually stunning but also highly functional and
+              user-friendly.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="circle">3</div>
+          <div class="vertical-line"></div>
+          <div class="step-service-content">
+            <h3>Build</h3>
+            <p>
+              Using the latest technologies and best practices, we bring your
+              designs to life. Our development team ensures that your product is
+              scalable, secure, and performs flawlessly across all devices.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="circle">4</div>
+          <div class="vertical-line"></div>
+          <div class="step-service-content">
+            <h3>Launch</h3>
+            <p>
+              We don’t just launch your product; we ensure it’s a success. From
+              rigorous testing to post-launch support, we’re with you every step
+              of the way to ensure your product thrives in the market.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="light-gray">
-        <div class="row">
-                <h3 class="subhead">What We Do</h3>
-                <h1 class="display-1">We have everything you need to launch and grow a successful digital business.</h1>
-                <p class="lead">
-                    From concept to launch, we provide end-to-end solutions tailored to your business needs. Our expertise spans software development, AI integration, Web Design, and stunning UI/UX design, ensuring your digital presence is both powerful and memorable. 
-                </p>
-            <div class="services-list">
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="step-service-content">
-                        <h3>Software Development</h3>
-                        <p>
-                            We build scalable, secure, and high-performance software solutions tailored to your business needs. Whether it’s web applications, mobile apps, or enterprise software, we’ve got you covered.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="step-service-content">
-                        <h3>Web Design</h3>
-                        <p>
-                            Our web designs are not just visually stunning but also highly functional. We create user-friendly interfaces that drive engagement and deliver results.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-pencil-ruler"></i>
-                    </div>
-                    <div class="step-service-content">
-                        <h3>UI/UX Design</h3>
-                        <p>
-                            We craft intuitive and delightful user experiences that keep your customers coming back. Our designs are backed by research and tailored to your audience.
-                        </p>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="step-service-content">
-                        <h3>AI Agents</h3>
-                        <p>
-                            Harness the power of AI with our custom-built intelligent agents. From chatbots to predictive analytics, we help you leverage AI to streamline operations and enhance customer experiences.
-                        </p>
-                    </div>
-                </div>
+      <div class="row">
+        <h3 class="subhead">What We Do</h3>
+        <h1 class="display-1">
+          We have everything you need to launch and grow a successful digital
+          business.
+        </h1>
+        <p class="lead">
+          From concept to launch, we provide end-to-end solutions tailored to
+          your business needs. Our expertise spans software development, AI
+          integration, Web Design, and stunning UI/UX design, ensuring your
+          digital presence is both powerful and memorable.
+        </p>
+        <div class="services-list">
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
             </div>
+            <div class="step-service-content">
+              <h3>Software Development</h3>
+              <p>
+                We build scalable, secure, and high-performance software
+                solutions tailored to your business needs. Whether it’s web
+                applications, mobile apps, or enterprise software, we’ve got you
+                covered.
+              </p>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <div class="step-service-content">
+              <h3>Web Design</h3>
+              <p>
+                Our web designs are not just visually stunning but also highly
+                functional. We create user-friendly interfaces that drive
+                engagement and deliver results.
+              </p>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-pencil-ruler"></i>
+            </div>
+            <div class="step-service-content">
+              <h3>UI/UX Design</h3>
+              <p>
+                We craft intuitive and delightful user experiences that keep
+                your customers coming back. Our designs are backed by research
+                and tailored to your audience.
+              </p>
+            </div>
+          </div>
+          <div class="service-item">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="step-service-content">
+              <h3>AI Agents</h3>
+              <p>
+                Harness the power of AI with our custom-built intelligent
+                agents. From chatbots to predictive analytics, we help you
+                leverage AI to streamline operations and enhance customer
+                experiences.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="s-contact">
-        <div class="row">
-            <div class="col-full">
-                <h3 class="subhead subhead--light">Contact Us</h3>
-                <h1 class="display-1 display-1--light">Get in touch and let's make something great together. Let's turn your idea into an even greater product.</h1>
-            </div>
+      <div class="row">
+        <div class="col-full">
+          <h3 class="subhead subhead--light">Contact Us</h3>
+          <h1 class="display-1 display-1--light">
+            Get in touch and let's make something great together. Let's turn
+            your idea into an even greater product.
+          </h1>
         </div>
-    
-        <div class="row contact-primary">
-            <!-- Contact Details -->
-            <div class="contact-details">
-                <h3 class="subhead subhead--light">Let's Connect</h3>
-                <p>
-                    <a href="mailto:info@kinwits.com" class="contact-email">info@kinwits.com</a>
-                </p>
-                <p class="contact-address">
-                    Shivam Tower, 1st floor,<br>
-                    Kota, Udupi District, KA<br>
-                    INDIA - 576221
-                </p>
-            </div> <!-- end contact-details -->
-    
-            <!-- Follow Us Section -->
-            <div class="follow-section">
-                <h3 class="subhead subhead--light">Follow Us</h3>
-                <ul class="contact-social">
-                    <li>
-                        <a href="https://instagram.com/kinwitstechnologies" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://linkedin.com/company/kinwits" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                </ul> <!-- end contact-social -->
-            </div> <!-- end follow-section -->
-        </div> <!-- end row -->
-    
-        <!-- Copyright and Scroll-to-Top -->
-        <div class="row cl-copyright">
-            <span>
-                Copyright ©<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://kinwits.com" target="_blank" rel="noopener noreferrer">KINWITS</a>
-            </span>
-            <a id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-                <i class="fas fa-arrow-up"></i>
-            </a>
+      </div>
+
+      <div class="row contact-primary">
+        <!-- Contact Details -->
+        <div class="contact-details">
+          <h3 class="subhead subhead--light">Let's Connect</h3>
+          <p>
+            <a href="mailto:info@kinwits.com" class="contact-email"
+              >info@kinwits.com</a
+            >
+          </p>
+          <p class="contact-address">
+            Shivam Tower, 1st floor,<br />
+            Kota, Udupi District, KA<br />
+            INDIA - 576221
+          </p>
         </div>
+        <!-- end contact-details -->
+
+        <!-- Follow Us Section -->
+        <div class="follow-section">
+          <h3 class="subhead subhead--light">Follow Us</h3>
+          <ul class="contact-social">
+            <li>
+              <a
+                href="https://instagram.com/kinwitstechnologies"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/company/kinwits"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+          <!-- end contact-social -->
+        </div>
+        <!-- end follow-section -->
+      </div>
+      <!-- end row -->
+
+      <!-- Copyright and Scroll-to-Top -->
+      <div class="row cl-copyright">
+        <span>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | This website is made with
+          <i class="fa fa-heart" aria-hidden="true"></i> by
+          <a
+            href="https://kinwits.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >KINWITS</a
+          >
+        </span>
+        <a id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+          <i class="fas fa-arrow-up"></i>
+        </a>
+      </div>
     </section>
 
     <script>
-        // Show/hide the button based on scroll position
-        window.addEventListener("scroll", function () {
-            const scrollButton = document.getElementById("scrollToTop");
-            if (window.scrollY > 300) { // Show when scrolled down 300px
-                scrollButton.style.display = "block";
-            } else {
-                scrollButton.style.display = "none";
-            }
-            });
+      // Show/hide the button based on scroll position
+      window.addEventListener("scroll", function () {
+        const scrollButton = document.getElementById("scrollToTop");
+        if (window.scrollY > 300) {
+          // Show when scrolled down 300px
+          scrollButton.style.display = "block";
+        } else {
+          scrollButton.style.display = "none";
+        }
+      });
 
-            // Scroll to the top when the button is clicked
-            document.getElementById("scrollToTop").addEventListener("click", function () {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+      // Scroll to the top when the button is clicked
+      document
+        .getElementById("scrollToTop")
+        .addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         });
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuToggle = document.querySelector(".menu-toggle");
-            const navMenu = document.querySelector(".navbar ul");
-            const closeIcon = document.querySelector(".close-icon");
-            const menuIcon = document.querySelector(".menu-icon");
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navMenu = document.querySelector(".navbar ul");
+        const closeIcon = document.querySelector(".close-icon");
+        const menuIcon = document.querySelector(".menu-icon");
 
-            // Function to toggle the menu
-            function toggleMenu() {
-                navMenu.classList.toggle("active");
+        // Function to toggle the menu
+        function toggleMenu() {
+          navMenu.classList.toggle("active");
 
-                // Toggle visibility of menu and close icons
-                if (navMenu.classList.contains("active")) {
-                    closeIcon.style.display = "block";
-                    menuIcon.style.display = "none";
-                } else {
-                    closeIcon.style.display = "none";
-                    menuIcon.style.display = "block";
-                }
-            }
+          // Toggle visibility of menu and close icons
+          if (navMenu.classList.contains("active")) {
+            closeIcon.style.display = "block";
+            menuIcon.style.display = "none";
+          } else {
+            closeIcon.style.display = "none";
+            menuIcon.style.display = "block";
+          }
+        }
 
-            // Function to close the menu
-            function closeMenu() {
-                navMenu.classList.remove("active");
-                closeIcon.style.display = "none";
-                menuIcon.style.display = "block";
-            }
+        // Function to close the menu
+        function closeMenu() {
+          navMenu.classList.remove("active");
+          closeIcon.style.display = "none";
+          menuIcon.style.display = "block";
+        }
 
-            // Close the menu when clicking outside of it
-            function closeMenuOnClickOutside(event) {
-                if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-                    closeMenu();
-                }
-            }
+        // Close the menu when clicking outside of it
+        function closeMenuOnClickOutside(event) {
+          if (
+            !navMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+          ) {
+            closeMenu();
+          }
+        }
 
-            // Add event listeners
-            menuToggle.addEventListener("click", toggleMenu);
-            document.addEventListener("click", closeMenuOnClickOutside);
+        // Add event listeners
+        menuToggle.addEventListener("click", toggleMenu);
+        document.addEventListener("click", closeMenuOnClickOutside);
 
-            // Close the menu when an <li> is clicked
-            const navLinks = document.querySelectorAll(".navbar ul li");
-            navLinks.forEach(link => {
-                link.addEventListener("click", closeMenu);
-            });
-
-            // Intersection Observer for animations
-            const options = {
-                root: null,  // Viewport
-                rootMargin: "0px",  // No margin
-                threshold: 0.2  // Trigger when 20% of the element is visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);  // Stop observing after it has been triggered
-                    }
-                });
-            }, options);
-
-            // Observe all .row and .step elements within the About section and .service-item elements in Services
-            const aboutSection = document.querySelector('#about');
-            const servicesSection = document.querySelector('#services');
-            const contactSection = document.querySelector('#contact');
-            
-            const aboutElements = aboutSection.querySelectorAll('.row, .step');
-            const serviceElements = servicesSection.querySelectorAll('.row, .service-item');
-            const contactElements = contactSection.querySelectorAll('.col-full, .contact-primary');
-            
-            aboutElements.forEach(element => observer.observe(element));
-            serviceElements.forEach(element => observer.observe(element));
-            contactElements.forEach(element => observer.observe(element));
+        // Close the menu when an <li> is clicked
+        const navLinks = document.querySelectorAll(".navbar ul li");
+        navLinks.forEach((link) => {
+          link.addEventListener("click", closeMenu);
         });
+
+        // Intersection Observer for animations
+        const options = {
+          root: null, // Viewport
+          rootMargin: "0px", // No margin
+          threshold: 0.2, // Trigger when 20% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // Stop observing after it has been triggered
+            }
+          });
+        }, options);
+
+        // Observe all .row and .step elements within the About section and .service-item elements in Services
+        const aboutSection = document.querySelector("#about");
+        const servicesSection = document.querySelector("#services");
+        const contactSection = document.querySelector("#contact");
+
+        const aboutElements = aboutSection.querySelectorAll(".row, .step");
+        const serviceElements = servicesSection.querySelectorAll(
+          ".row, .service-item"
+        );
+        const contactElements = contactSection.querySelectorAll(
+          ".col-full, .contact-primary"
+        );
+
+        aboutElements.forEach((element) => observer.observe(element));
+        serviceElements.forEach((element) => observer.observe(element));
+        contactElements.forEach((element) => observer.observe(element));
+      });
     </script>
-</body>
+  </body>
 </html>
