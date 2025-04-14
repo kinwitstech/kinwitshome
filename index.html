@@ -41,7 +41,6 @@
         justify-content: space-between;
         align-items: center;
         padding: 2rem 6rem;
-        color: #ffffff;
         position: absolute; /* Make the navbar fixed to the top */
         top: 0; /* Position it at the very top */
         left: 0; /* Ensure it's aligned to the left */
@@ -59,7 +58,7 @@
         display: flex;
         align-items: center;
         text-decoration: none;
-        color: white;
+        color: floralwhite;
       }
 
       .navbar .site-logo img {
@@ -108,7 +107,7 @@
 
       .navbar ul li a {
         text-decoration: none;
-        color: #ffffff;
+        color: floralwhite;
         font-weight: 500;
         transition: color 0.3s ease;
       }
@@ -132,13 +131,13 @@
         display: flex; /* Enables flexbox for centering content */
         align-items: center; /* Vertically centers content */
         justify-content: center; /* Horizontally centers content */
-        color: white; /* Sets text color to white for contrast, adjust as needed */
+        color: floralwhite; /* Sets text color to white for contrast, adjust as needed */
       }
 
       /* Header styling */
       .header {
         padding: 13rem 0;
-        color: #ffffff;
+        color: floralwhite;
         text-align: center;
         min-height: 970px;
         background-color: #111111;
@@ -171,6 +170,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover; /* maintain aspect ratio, fill space */
+        object-position: center center;
       }
 
       header .home-content {
@@ -218,7 +218,7 @@
       .header h1 {
         font-size: 6rem;
         margin-bottom: 1rem;
-        color: #ffffff;
+        color: floralwhite;
         text-align: left;
       }
 
@@ -227,7 +227,7 @@
         margin-bottom: 2rem;
         position: relative;
         padding-left: 6rem;
-        color: #ffffff;
+        color: floralwhite;
       }
 
       .header p::before {
@@ -245,7 +245,7 @@
       section {
         padding-top: 5rem;
         padding-bottom: 5rem;
-        background-color: #ffffff;
+        background-color: floralwhite;
         position: relative;
       }
 
@@ -400,8 +400,9 @@
         margin-bottom: 1rem;
       }
 
-      .light-gray {
-        background-color: #f1f1f1;
+      .services-area {
+        border-top: 1px solid saddlebrown;
+        background-color: floralwhite;
       }
 
       .services-list {
@@ -456,7 +457,7 @@
       }
 
       .display-1--light {
-        color: #ffffff;
+        color: floralwhite;
       }
 
       .contact-main {
@@ -474,7 +475,7 @@
         display: inline-block;
         font-size: 2.4rem;
         line-height: 1.222;
-        color: #ffffff;
+        color: floralwhite;
         position: relative;
         text-decoration: none;
         transition: color 0.3s ease;
@@ -507,7 +508,7 @@
       }
 
       .contact-social a {
-        color: #fff;
+        color: floralwhite;
         margin: 0 10px;
         transition: color 0.3s ease, transform 0.3s ease;
       }
@@ -575,7 +576,7 @@
       }
 
       .scroll-to-top:hover {
-        background-color: white;
+        background-color: floralwhite;
       }
 
       .scroll-to-top:before {
@@ -619,7 +620,7 @@
           display: flex;
           align-items: center;
           text-decoration: none;
-          color: white;
+          color: floralwhite;
           margin-left: 2rem;
         }
 
@@ -1010,6 +1011,10 @@
       }
 
       @media (max-width: 1024px) {
+        .video-container video {
+          object-position: left;
+        }
+
         .vertical-line {
           display: none;
         }
@@ -1186,7 +1191,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="light-gray">
+    <section id="services" class="services-area">
       <div class="row">
         <h3 class="subhead">What We Do</h3>
         <h1 class="display-1">
